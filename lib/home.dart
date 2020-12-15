@@ -5,11 +5,14 @@ import 'package:tec_info_app/login.dart';
 import 'package:tec_info_app/pendientes.dart';
 import 'package:tec_info_app/ui_provider.dart';
 
+import 'log_db.dart';
+
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    LogDB.db.database;
     return Scaffold(
       appBar: AppBar(
         title: Text('Applicate'),
