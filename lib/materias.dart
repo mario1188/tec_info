@@ -106,6 +106,7 @@ class _MateriasState extends State<Materias> {
               if (user.idmaterias == "0") {
                 user.idmaterias = item.idmateria.toString();
                 LogDB.db.actualizarUser(user);
+                subirModificacion(user);
                 nombre = item.nombre;
                 access = true;
               } else {
@@ -131,33 +132,6 @@ class _MateriasState extends State<Materias> {
           }
           //print(access);
           _mostrarMensaje(context, access, nombre, tipo);
-        });
-  }
-
-  Widget botonMostrar(BuildContext context) {
-    bool access = false;
-    checarCredenciales();
-    /*lista_materias.forEach((element) {
-      print(element.nombre);
-    });
-    print(lista_materias.length);*/
-    return RaisedButton(
-        child: Text('Materias'),
-        color: Colors.blueGrey,
-        textColor: Colors.white,
-        shape: StadiumBorder(),
-        onPressed: () {
-          String nombre = "";
-          for (var item in lista_materias) {
-            if (item.idmateria == _id && item.password == _pass) {
-              /*LogDB.db.actualizarLog();
-              nombre = item.nombre;
-              access = true;*/
-              break;
-            }
-          }
-          //print(access);
-          //_mostrarMensaje(context, access, nombre, );
         });
   }
 
@@ -208,6 +182,10 @@ class _MateriasState extends State<Materias> {
     }
     //print("falso");
     return false;
+  }
+
+  void subirModificacion(User user) async {
+
   }
 }
 

@@ -15,6 +15,7 @@ class User {
         this.idmaterias,
         this.nombre,
         this.password,
+        this.idnube,
     });
 
     int id;
@@ -22,6 +23,7 @@ class User {
     String idmaterias;
     String nombre;
     int password;
+    String idnube;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -29,6 +31,7 @@ class User {
         idmaterias: json["idmaterias"],
         nombre: json["nombre"],
         password: json["password"],
+        idnube: json["idnube"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -37,5 +40,6 @@ class User {
         "idmaterias": idmaterias,
         "nombre": nombre,
         "password": password,
+        "idnube": idnube,
     };
 }

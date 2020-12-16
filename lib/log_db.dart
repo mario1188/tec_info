@@ -23,6 +23,7 @@ class LogDB {
     inicial.idmaterias = "nada";
     inicial.nombre = "inicial";
     inicial.password = 000000;
+    inicial.idnube = "url";
     this.loguearUsuario(inicial);
     return _database;
   }
@@ -39,6 +40,7 @@ class LogDB {
               id INTEGER,
               clave INTEGER,
               idmaterias TEXT,
+              idnube TEXT,
               nombre TEXT,
               password INTEGER
             )
@@ -52,11 +54,12 @@ class LogDB {
     final idmaterias = usuario.idmaterias;
     final nombre = usuario.nombre;
     final password = usuario.password;
+    final idnube = usuario.idnube;
 
     final db = await database;
     final res = await db.rawInsert('''
-      INSERT INTO Log(id, clave, idmaterias, nombre, password)
-        VALUES( $id, $clave, '$idmaterias', '$nombre', $password)
+      INSERT INTO Log(id, clave, idmaterias, idnube, nombre, password)
+        VALUES( $id, $clave, '$idmaterias', '$idnube', '$nombre', $password)
     
     ''');
 
