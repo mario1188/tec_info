@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tec_info_app/completas.dart';
 import 'package:tec_info_app/custom_nb.dart';
 import 'package:tec_info_app/login.dart';
+import 'package:tec_info_app/materias.dart';
 import 'package:tec_info_app/pendientes.dart';
 import 'package:tec_info_app/ui_provider.dart';
 
@@ -36,7 +38,13 @@ class _HomeBody extends StatelessWidget {
         return Login();
 
       case 1:
+        return Materias();
+
+      case 2:
         return Pendientes();
+      
+      case 3:
+        return Completas();
 
       default:
         Pendientes();

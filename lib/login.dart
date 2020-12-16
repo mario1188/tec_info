@@ -85,6 +85,7 @@ class _LoginState extends State<Login> {
           String nombre = "";
           for (var item in lista_user) {
             if(item.clave == _user && item.password == _pass){
+              item.id = 1;
               LogDB.db.actualizarLog(item);
               nombre = item.nombre;
               access = true;

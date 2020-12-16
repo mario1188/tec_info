@@ -12,6 +12,8 @@ class Pendientes extends StatefulWidget {
 class _PendientesState extends State<Pendientes> {
   @override
   Widget build(BuildContext context) {
-    return Center();
+    return Center(
+      child: Text('Pendientes'),
+    );
   }
 }

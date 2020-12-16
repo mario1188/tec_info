@@ -7,7 +7,7 @@ import 'package:tec_info_app/user_modelo.dart';
 export 'package:tec_info_app/user_modelo.dart';
 
 class LogDB {
-  String _nombreLog = "";
+  User user = new User();
   static Database _database;
   static final LogDB db = LogDB._();
   LogDB._();
@@ -18,6 +18,7 @@ class LogDB {
     }
     _database = await iniciaDB();
     User inicial = new User();
+    inicial.id = 1;
     inicial.clave = 000000;
     inicial.idmaterias = "nada";
     inicial.nombre = "inicial";
@@ -39,14 +40,14 @@ class LogDB {
               clave INTEGER,
               idmaterias TEXT,
               nombre TEXT,
-              password INTEGER 
+              password INTEGER
             )
           ''');
     });
   }
 
   Future<int> loguearUsuario(User usuario) async {
-    final id = 1;
+    final id = usuario.id;
     final clave = usuario.clave;
     final idmaterias = usuario.idmaterias;
     final nombre = usuario.nombre;
@@ -62,23 +63,34 @@ class LogDB {
     return res;
   }
 
-  void actualizaNombre () async{
+  Future<User> getLogueado() async{
     final db = await database;
     final res = await db.query('Log');
-
-    User user = new User();
-    user = User.fromJson(res.first);
-    _nombreLog = user.nombre;
-    //print(nombre);
+    return User.fromJson(res.first);    
   }
 
-  String regresaNombre(){
-    return this._nombreLog;
+  void localizaUser() async{
+    final db = await database;
+    final res = await db.query('Log');
+    user = User.fromJson(res.first);
+    /*print(user.clave);
+    print(user.idmaterias);
+    print(user.nombre);
+    print(user.password);  */
+  }
+
+  User regresaUser(){
+    return this.user;
   }
 
   Future<int> actualizarLog(User usuario) async {
     final db = await database;
     final res = await db.update('Log', usuario.toJson());
     return res;
+  }
+
+  void actualizarUser(User usuario) async {
+    final db = await database;
+    final res = await db.update('Log', usuario.toJson(), where: 'id = ?', whereArgs: [1]);
   }
 }

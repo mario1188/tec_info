@@ -15,7 +15,9 @@ class CustomNB extends StatelessWidget {
       elevation: 0,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
+        BottomNavigationBarItem(icon: Icon(Icons.grade), label: 'Materias'),
         BottomNavigationBarItem(icon: Icon(Icons.pending), label: 'Pendientes'),
+        BottomNavigationBarItem(icon: Icon(Icons.check), label: 'Completas'),
       ],
       type: BottomNavigationBarType.fixed,
     );
