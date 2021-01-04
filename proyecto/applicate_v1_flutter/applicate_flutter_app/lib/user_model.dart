@@ -15,6 +15,7 @@ class UserModel {
         this.nombre,
         this.idmaterias,
         this.idtareas,
+        this.id,
     });
 
     int clave;
@@ -22,6 +23,7 @@ class UserModel {
     String nombre;
     String idmaterias;
     String idtareas;
+    int id;
 
     factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         clave: json["clave"],

@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    CurrentUserDB.db.database;
+    CurrentUserDB.db.getcurrent(0);
     return Scaffold(
       appBar: AppBar(
         title: Text('Applicate'),
@@ -24,13 +24,8 @@ class HomePage extends StatelessWidget {
 }
 
 class _HomeBody extends StatelessWidget {
-  const _HomeBody({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-
-    CurrentUserDB.db.database;
-
     final uiProvider = Provider.of<UIProvier>(context);
     final index = uiProvider.dimeSeleccion;
 
