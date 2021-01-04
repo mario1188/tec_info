@@ -33,7 +33,7 @@ class ProviderFirebase {
   }
 
   Future<List<UserModel>> cargarAlumnos() async {
-    final dir = '$_url/alumnos.json';
+    final dir = '$_url/usuarios.json';
     final resp = await http.get(dir);
     final Map<String, dynamic> dec = json.decode(resp.body);
     dec.forEach((key, value) {

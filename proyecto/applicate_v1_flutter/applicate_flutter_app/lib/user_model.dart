@@ -19,7 +19,7 @@ class UserModel {
     });
 
     int clave;
-    int password;
+    String password;
     String nombre;
     String idmaterias;
     String idtareas;
@@ -31,6 +31,7 @@ class UserModel {
         nombre: json["nombre"],
         idmaterias: json["idmaterias"],
         idtareas: json["idtareas"],
+        id: json["id"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -39,5 +40,6 @@ class UserModel {
         "nombre": nombre,
         "idmaterias": idmaterias,
         "idtareas": idtareas,
+        "id": id,
     };
 }

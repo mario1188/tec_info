@@ -21,7 +21,7 @@ class CurrentUserDB {
 
     UserModel user = new UserModel();
     user.clave = 0;
-    user.password = 0;
+    user.password = "0";
     user.nombre = "usuario inicial";
     user.idmaterias = "-";
     user.idtareas = "-";
@@ -43,7 +43,7 @@ class CurrentUserDB {
           CREATE TABLE currentUser(
             id INTEGER,
             clave INTEGER,
-            password INTEGER,
+            password TEXT,
             nombre TEXT,
             idmaterias TEXT,
             idtareas TEXT
@@ -71,7 +71,7 @@ class CurrentUserDB {
     print('iniical login');
     int id = 0;
     int clave = user.clave;
-    int password = user.password;
+    String password = user.password;
     String nombre = user.nombre;
     String idmaterias = user.idmaterias;
     String idtareas = user.idtareas;
@@ -79,7 +79,7 @@ class CurrentUserDB {
     final db = await database;
     final res = await db.rawInsert(''' 
       INSERT INTO currentUser(id, clave, password, nombre, idmaterias, idtareas)
-        VALUES( $id, $clave, $password, '$nombre', '$idmaterias', '$idtareas')
+        VALUES( $id, $clave, '$password', '$nombre', '$idmaterias', '$idtareas')
     ''');
     return res;
   }

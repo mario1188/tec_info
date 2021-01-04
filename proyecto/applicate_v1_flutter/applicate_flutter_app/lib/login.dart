@@ -90,14 +90,18 @@ class _LoginPageState extends State<LoginPage> {
                 _nombre != "0" &&
                 _pass != "" &&
                 _pass != "0") {
-              /*    
+              /*
               print(_nombre);
               print(_pass);
               */
               int cont = 0;
               for (var item in this.lista) {
+                //print('clave ${item.clave} y pass ${item.password}');
                 if (item.clave == int.parse(_nombre) &&
-                    item.password == int.parse(_pass)) {
+                    item.password == _pass) {
+                  if (item.idmaterias == "0") {
+                    item.idmaterias = "-";
+                  }
                   CurrentUserDB.db.actualizarcurrentlog(item);
                   this.userLinea = item;
                   //print(item.nombre);
@@ -202,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void cargardatos() async {
     this.userLinea = await CurrentUserDB.db.getcurrent(0);
-    
+
     this.lista = await firebase.cargarAlumnos();
   }
 }
